@@ -3,7 +3,9 @@
 一个使用HTML/JavaScript实现的交互式镜面按钮，具有实时摄像头反射效果。仅使用原生JavaScript。
 
 ## demo
-![demo](/demo.png)
+<p align="center">
+  <img src="/demo.png" alt="demo" width="320" style="border-radius: 18px; box-shadow: 0 0 0 12px #233245 inset, 0 2px 18px 0 #001b3a90; background: radial-gradient(circle, #e7ecef 40%, #425678 100%); display: block; margin: auto;">
+</p>
 
 ## ✨ 特性
 
