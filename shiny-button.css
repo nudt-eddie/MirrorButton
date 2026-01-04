@@ -1,0 +1,189 @@
+:root {
+    --shiny-button-transition: 0.1s;
+    --shiny-button-border-radius: 56px;
+}
+
+/* Button container */
+.shiny-button-container {
+    position: relative;
+    transition: transform var(--shiny-button-transition), box-shadow var(--shiny-button-transition);
+    user-select: none;
+}
+
+.shiny-button-container.pressed {
+    transform: translateZ(0) scale(0.95);
+}
+
+/* Main button */
+.shiny-button {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--shiny-button-border-radius);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25),
+                0px 8px 16px rgba(0, 0, 0, 0.15),
+                0px 16px 32px rgba(0, 0, 0, 0.125);
+    transform: translateZ(0);
+    transition: transform var(--shiny-button-transition),
+                box-shadow var(--shiny-button-transition);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.shiny-button.pressed {
+    box-shadow: 0px -2px 1px rgba(255, 255, 255, 0.5),
+                0px -1px 1px rgba(0, 0, 0, 0.5),
+                0px -4px 1px rgba(255, 255, 255, 0.5),
+                0px 4px 1px rgba(255, 255, 255, 0.5),
+                0px 1px 1px rgba(0, 0, 0, 0.5),
+                0px 4px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Shadow overlay */
+.shiny-button-shadow {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(150, 150, 150, 0);
+    opacity: 0.7;
+    border-radius: var(--shiny-button-border-radius);
+    box-shadow: inset 0px 2px 2px rgba(255, 255, 255, 1),
+                inset 0px 2px 2px rgba(255, 255, 255, 0.8),
+                inset 0px -2px 2px rgba(255, 255, 255, 0.5);
+    transition: box-shadow var(--shiny-button-transition);
+}
+
+.shiny-button.pressed .shiny-button-shadow {
+    box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.1),
+                inset 0px 4px 4px rgba(0, 0, 0, 0.2),
+                inset 0px -6px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button text */
+.shiny-button-text {
+    pointer-events: none;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 48px;
+    font-weight: 500;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0px -1px 0px rgba(255, 255, 255, 0.5))
+            drop-shadow(0px 1px 0px rgba(255, 255, 255, 0.6));
+    backdrop-filter: blur(2px);
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.shiny-button-text::selection {
+    background-color: transparent;
+}
+
+/* Video reflection */
+.shiny-button-reflection {
+    width: 100%;
+    height: 100%;
+    transform: scaleX(-1);
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+/* Surface reflection */
+.shiny-button-surface-reflection {
+    height: 150px;
+    width: 350px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 100px;
+    transform: translate(-50%, -50%) scaleX(-1);
+    object-fit: fill;
+    filter: blur(24px);
+    opacity: 0.35;
+    transition: opacity var(--shiny-button-transition),
+                transform var(--shiny-button-transition);
+}
+
+.shiny-button-surface-reflection.pressed {
+    opacity: 0.1;
+}
+
+/* Details container (cursor reflection & fingerprints) */
+.shiny-button-details-container {
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+/* Hacky inner div for cursor clipping */
+.shiny-button-hacky-cursor-inner-div {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--shiny-button-border-radius);
+}
+
+/* Cursor reflection */
+.shiny-button-cursor {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    left: -2px;
+    top: 6px;
+    filter: blur(2px);
+    transition: opacity var(--shiny-button-transition);
+}
+
+/* Fingerprints */
+.shiny-button-fingerprint {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+    width: 76px;
+    height: 76px;
+    background: rgba(255, 255, 255, 0.01);
+    border-radius: 100%;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    mask-image: radial-gradient(
+        50% 50% at 50% 50%,
+        #000000 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    -webkit-mask-image: radial-gradient(
+        50% 50% at 50% 50%,
+        #000000 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+/* Responsive design */
+@media screen and (max-width: 800px) {
+    .shiny-button-cursor {
+        display: none;
+    }
+
+    .shiny-button-text {
+        font-size: 36px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .shiny-button-text {
+        font-size: 28px;
+    }
+}
