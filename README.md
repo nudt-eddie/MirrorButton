@@ -134,6 +134,8 @@ MIT License - 详见 LICENSE 文件
 ## 🎯 灵感来源及致谢
 
 本项目灵感来源于 [alexwidua/prototypes/ShinyButton](https://github.com/alexwidua/prototypes/tree/master/ShinyButton)，将其React版本重新实现为HTML/JavaScript版本，以便更广泛地使用和集成。
+
 ---
 
 **注意：** 首次使用时浏览器会请求摄像头权限。如果拒绝或摄像头不可用，按钮将使用优雅的渐变回退效果。
+
